@@ -30,6 +30,8 @@ const SITES = [
   // —— 生活娱乐 ——
   { name:"网易云音乐",   url:"https://music.163.com/",            desc:"在线音乐播放",               cat:"生活娱乐" },
   { name:"豆瓣",         url:"https://www.douban.com/",           desc:"书影音评分与记录",           cat:"生活娱乐" },
+   //—— 我的频道 ——
+   { name:"云布岛QQ频道", url:"https://pd.qq.com/pd63695515", desc:"加入频道交流反馈，获取更新", cat:"社区", tag:"官方" },
 ];
 
 /* ========== 以下逻辑一般无需修改 ========== */
