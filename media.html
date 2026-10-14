@@ -1,1 +1,400 @@
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>云不倒 - 图片视频与软件下载</title>
+  <meta name="description" content="云不倒个人网站，展示图片、视频，并提供软件下载。">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1200px, 92%); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .menu-btn {
+      display: none;
+      background: none;
+      border: 0;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        padding: 16px;
+        gap: 16px;
+        border-bottom: 1px solid var(--border);
+        display: none;
+      }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: block; }
+    }
+
+    .hero {
+      padding: 80px 0 60px;
+      background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin: 0 0 16px;
+      line-height: 1.2;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 680px;
+      margin: 0 auto 28px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 10px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      transition: background .2s, transform .2s;
+      border: 0;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    section { padding: 64px 0; }
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-title h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin: 0 0 10px;
+    }
+    .section-title p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      background: #ddd;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .video-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .video-card video,
+    .video-card iframe {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      background: #000;
+    }
+    .video-info { padding: 16px; }
+    .video-info h3 { margin: 0 0 6px; font-size: 1.1rem; }
+    .video-info p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .download-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+    .download-card h3 { margin: 0 0 8px; }
+    .download-card .meta {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 16px;
+    }
+    .download-card .meta span {
+      display: inline-block;
+      margin-right: 12px;
+    }
+    .download-card .btn {
+      margin-top: auto;
+      text-align: center;
+    }
+
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      padding: 32px 0;
+      text-align: center;
+      font-size: .9rem;
+    }
+    footer a { color: #d1d5db; }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 20px;
+    }
+    .lightbox.show { display: flex; }
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 88vh;
+      border-radius: 10px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">云不倒</a>
+      <button class="menu-btn" id="menuBtn" aria-label="菜单">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#gallery">图片</a>
+        <a href="#videos">视频</a>
+        <a href="#downloads">软件下载</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>欢迎来到云不倒</h1>
+        <p>这里展示我的图片、视频，并提供常用软件下载。点击下方按钮快速浏览。</p>
+        <a href="#gallery" class="btn">看图片</a>
+        <a href="#downloads" class="btn btn-outline">下载软件</a>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-title">
+          <h2>图片展示</h2>
+          <p>点击图片可放大查看</p>
+        </div>
+        <div class="gallery">
+          <div class="gallery-item"><img src="images/photo1.jpg" alt="图片1" loading="lazy"></div>
+          <div class="gallery-item"><img src="images/photo2.jpg" alt="图片2" loading="lazy"></div>
+          <div class="gallery-item"><img src="images/photo3.jpg" alt="图片3" loading="lazy"></div>
+          <div class="gallery-item"><img src="images/photo4.jpg" alt="图片4" loading="lazy"></div>
+          <div class="gallery-item"><img src="images/photo5.jpg" alt="图片5" loading="lazy"></div>
+          <div class="gallery-item"><img src="images/photo6.jpg" alt="图片6" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="container">
+        <div class="section-title">
+          <h2>视频播放</h2>
+          <p>支持本地视频和 B 站 / YouTube 嵌入</p>
+        </div>
+        <div class="video-grid">
+          <div class="video-card">
+            <video controls preload="metadata" poster="images/video-poster.jpg">
+              <source src="videos/demo.mp4" type="video/mp4">
+              您的浏览器不支持 HTML5 视频。
+            </video>
+            <div class="video-info">
+              <h3>本地视频示例</h3>
+              <p>把 videos/demo.mp4 换成你的视频文件</p>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <iframe src="//player.bilibili.com/player.html?bvid=你的BV号&page=1" scrolling="no" allowfullscreen="true"></iframe>
+            <div class="video-info">
+              <h3>B 站视频示例</h3>
+              <p>替换 iframe 里的 BV 号即可</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="downloads">
+      <div class="container">
+        <div class="section-title">
+          <h2>软件下载</h2>
+          <p>点击按钮下载，文件放在 downloads 文件夹</p>
+        </div>
+        <div class="download-grid">
+          <div class="download-card">
+            <h3>软件名称 1</h3>
+            <div class="meta"><span>版本：v1.0</span><span>大小：25MB</span><span>系统：Windows</span></div>
+            <a class="btn" href="downloads/setup1.zip" download>立即下载</a>
+          </div>
+
+          <div class="download-card">
+            <h3>软件名称 2</h3>
+            <div class="meta"><span>版本：v2.3</span><span>大小：68MB</span><span>系统：Android</span></div>
+            <a class="btn" href="downloads/app2.apk" download>立即下载</a>
+          </div>
+
+          <div class="download-card">
+            <h3>软件名称 3</h3>
+            <div class="meta"><span>版本：v3.1</span><span>大小：120MB</span><span>系统：macOS</span></div>
+            <a class="btn" href="https://你的网盘链接" target="_blank" rel="noopener">网盘下载</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> 云不倒 · <a href="https://www.yunbudao.top/">www.yunbudao.top</a></p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img src="" alt="放大图片" id="lightboxImg">
+  </div>
+
+  <script>
+    // 移动端菜单
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // 图片灯箱
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('show');
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('show');
+      lightboxImg.src = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // 年份
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
