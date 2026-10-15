@@ -32,6 +32,26 @@ const SITES = [
   // —— 社区与媒体 ——
   { name:"语不道QQ频道", url:"https://pd.qq.com/pd63695515",      desc:"加入频道交流反馈，获取更新", cat:"社区", tag:"官方" },
   { name:"视频与图片",   url:"media.html",                        desc:"浏览图片和视频合集",         cat:"媒体", tag:"新" },
+   // —— APP 下载 ——
+{ name:"微信",     url:"https://weixin.qq.com/",              desc:"腾讯官方微信下载",       cat:"APP", tag:"常用" },
+{ name:"QQ",       url:"https://im.qq.com/",                  desc:"腾讯官方 QQ 下载",       cat:"APP" },
+{ name:"抖音",     url:"https://www.douyin.com/download",     desc:"抖音客户端下载",         cat:"APP" },
+{ name:"哔哩哔哩", url:"https://app.bilibili.com/",           desc:"B站客户端下载",          cat:"APP" },
+{ name:"Chrome",   url:"https://www.google.cn/chrome/",       desc:"谷歌浏览器下载",         cat:"APP" },
+{ name:"Edge",     url:"https://www.microsoft.com/edge",      desc:"微软 Edge 浏览器下载",   cat:"APP" },
+
+// —— 接口网址 ——
+{ name:"免费 API 合集", url:"https://github.com/public-apis/public-apis", desc:"各类免费 API 接口汇总", cat:"接口", tag:"热门" },
+{ name:"JSONPlaceholder", url:"https://jsonplaceholder.typicode.com/", desc:"免费测试用 REST API",  cat:"接口" },
+{ name:"天气 API",      url:"https://openweathermap.org/api",           desc:"全球天气数据接口",     cat:"接口" },
+{ name:"高德开放平台",   url:"https://lbs.amap.com/",                    desc:"地图、定位相关 API",   cat:"接口" },
+{ name:"聚合数据",       url:"https://www.juhe.cn/",                     desc:"各类数据接口服务",     cat:"接口" },
+{ name:"API 文档导航",   url:"https://apifox.com/",                      desc:"接口调试与文档管理",   cat:"接口" },
+   // —— 网盘资源 ——
+{ name:"影视资源合集", url:"https://pan.baidu.com/s/xxxxx", desc:"提取码：1234", cat:"网盘资源", tag:"热门" },
+{ name:"软件安装包",   url:"https://pan.quark.cn/s/xxxxx", desc:"常用软件安装包大全", cat:"网盘资源" },
+{ name:"学习资料",     url:"https://www.aliyundrive.com/s/xxxxx", desc:"各类教程与文档", cat:"网盘资源" },
+{ name:"字体库",       url:"https://pan.baidu.com/s/xxxxx", desc:"提取码：abcd，常用中英文字体", cat:"网盘资源" },
 ];
 
 /* ========== 以下逻辑无需修改 ========== */
