@@ -40,7 +40,7 @@ const SITES = [
   // —— 接口网址 ——
   { name:"免费 API 合集", url:"https://github.com/public-apis/public-apis", desc:"各类免费 API 接口汇总", cat:"接口", tag:"热门" },
   { name:"JSONPlaceholder", url:"https://jsonplaceholder.typicode.com/", desc:"免费测试用 REST API",  cat:"接口" },
-  { name:"天气 API",      url:"https://openweathermap.org/api",           desc:"全球天气数据接口",     cat:"接口" },
+  { name:"天气 API",      url:"http://www.weather.com.cn",           desc:"中国天气数据接口",     cat:"接口" },
   { name:"高德开放平台",   url:"https://lbs.amap.com/",                    desc:"地图、定位相关 API",   cat:"接口" },
   { name:"聚合数据",       url:"https://www.juhe.cn/",                     desc:"各类数据接口服务",     cat:"接口" },
   { name:"API 文档导航",   url:"https://apifox.com/",                      desc:"接口调试与文档管理",   cat:"接口" },
