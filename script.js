@@ -46,7 +46,7 @@ const SITES = [
   { name:"API 文档导航",   url:"https://apifox.com/",                      desc:"接口调试与文档管理",   cat:"接口" },
 
   // —— 网盘资源 ——
-  { name:"影视资源合集", url:"https://pan.baidu.com/s/xxxxx", desc:"提取码：1234", cat:"网盘资源", tag:"热门" },
+  { name:"影视资源合集", url:"https://pan.baidu.com/s/1DKIFbhr8jM71W7EgMar2Gg?pwd=ybd8", desc:"提取码：ybd8", cat:"网盘资源", tag:"热门" },
   { name:"软件安装包",   url:"https://pan.quark.cn/s/xxxxx", desc:"常用软件安装包大全", cat:"网盘资源" },
   { name:"学习资料",     url:"https://www.aliyundrive.com/s/xxxxx", desc:"各类教程与文档", cat:"网盘资源" },
   { name:"字体库",       url:"https://pan.baidu.com/s/xxxxx", desc:"提取码：abcd，常用中英文字体", cat:"网盘资源" },
